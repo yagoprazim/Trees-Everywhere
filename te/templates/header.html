@@ -1,0 +1,35 @@
+<header class="bg-success text-white p-3">
+    <div class="mb-3 text-center">
+        <h1>User Area</h1>
+        <p class="lead">Welcome, {{ user_name }}!</p>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 py-2 {% if request.path == '/te/user/profile/' %}active{% endif %}" href="{% url 'user-profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 py-2 {% if request.path == '/te/user/trees/' %}active{% endif %}" href="{% url 'user-trees' %}">My Trees</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 py-2 {% if request.path == '/te/user/accounts/all-trees/' %}active{% endif %}" href="{% url 'user-accounts-trees' %}">Trees Accounts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5 py-2 {% if request.path == '/te/user/trees/plant/' %}active{% endif %}" href="{% url 'user-trees-plant' %}">Plant a Tree</a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link fs-5 py-2 nav-link">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
